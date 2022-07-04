@@ -1,24 +1,4 @@
-/*
- * Copyright 2020 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-package com.sam43.material3mvvmca.buildsrc
-
-object Versions {
-    const val ktlint = "0.45.2"
-}
+package com.sam43.deps
 
 object Libs {
     const val androidGradlePlugin = "com.android.tools.build:gradle:7.2.1"
@@ -105,12 +85,4 @@ object Libs {
             const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:$version"
         }
     }
-}
-
-object Urls {
-    const val composeSnapshotRepo = "https://androidx.dev/snapshots/builds/" +
-        "${Libs.AndroidX.Compose.snapshot}/artifacts/repository/"
-    const val composeMaterial3SnapshotRepo = "https://androidx.dev/snapshots/builds/" +
-            "${Libs.AndroidX.Compose.Material3.snapshot}/artifacts/repository/"
-    const val accompanistSnapshotRepo = "https://oss.sonatype.org/content/repositories/snapshots"
 }

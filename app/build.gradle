@@ -1,27 +1,32 @@
-import com.sam43.material3mvvmca.buildsrc.Libs
+import com.sam43.deps.AppConfig
+import com.sam43.deps.AppDependencies
+import com.sam43.deps.Libs
 
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id("kotlin-android")
 }
 
 android {
-    compileSdk 32
+    compileSdk(AppConfig.compileSdk)
 
     defaultConfig {
-        applicationId "com.sam43.material3mvvmca"
-        minSdk 21
-        targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        applicationId(AppConfig.applicationId)
+        minSdk(AppConfig.minSdk)
+        targetSdk(AppConfig.targetSdk)
+        versionCode(AppConfig.versionCode)
+        versionName(AppConfig.versionName)
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner(AppConfig.testRunnerClass)
     }
 
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        getByName("release") {
+            proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    AppConfig.proguardRules
+            )
         }
     }
     compileOptions {
@@ -52,16 +57,37 @@ android {
 //        exclude "META-INF/AL2.0"
 //        exclude "META-INF/LGPL2.1"
     }
+    flavorDimensions(AppConfig.dimension)
+    productFlavors {
+        create("staging") {
+            applicationIdSuffix = ".staging"
+            setDimension(AppConfig.dimension)
+        }
+
+        create("production") {
+            setDimension(AppConfig.dimension)
+        }
+    }
 }
 
 dependencies {
-    implementation Libs.Kotlin.stdlib
+    //std lib
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    //app libs
+    implementation(AppDependencies.appLibraries)
+    // covered, rest can be configured
+//    implementation Libs.Kotlin.stdlib
+//    implementation Libs.AndroidX.coreKtx
+//    implementation Libs.AndroidX.appcompat
+    //test libs
+    testImplementation(AppDependencies.testLibraries)
+    // covered, rest can be configured
+//    androidTestImplementation Libs.junit
+//    androidTestImplementation Libs.AndroidX.Test.espressoCore
+    androidTestImplementation(AppDependencies.androidTestLibraries)
+
     implementation Libs.Coroutines.android
-
-
     implementation Libs.AndroidX.Activity.activityCompose
-    implementation Libs.AndroidX.coreKtx
-    implementation Libs.AndroidX.appcompat
     implementation Libs.AndroidX.Lifecycle.livedata
     implementation Libs.AndroidX.Lifecycle.viewModelCompose
     implementation Libs.AndroidX.Navigation.fragment
@@ -81,9 +107,7 @@ dependencies {
 
     debugImplementation Libs.AndroidX.Compose.uiTestManifest
 
-    androidTestImplementation Libs.junit
     androidTestImplementation Libs.AndroidX.Test.core
-    androidTestImplementation Libs.AndroidX.Test.espressoCore
     androidTestImplementation Libs.AndroidX.Test.rules
     androidTestImplementation Libs.AndroidX.Test.Ext.junit
     androidTestImplementation Libs.AndroidX.Compose.uiTest
