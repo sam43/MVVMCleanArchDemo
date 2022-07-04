@@ -1,4 +1,4 @@
-import com.example.compose.jetchat.buildsrc.Libs
+import com.sam43.material3mvvmca.buildsrc.Libs
 
 plugins {
     id 'com.android.application'

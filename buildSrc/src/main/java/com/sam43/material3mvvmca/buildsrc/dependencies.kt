@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.compose.jetchat.buildsrc
+package com.sam43.material3mvvmca.buildsrc
 
 object Versions {
     const val ktlint = "0.45.2"
@@ -67,7 +67,7 @@ object Libs {
             const val uiTest = "androidx.compose.ui:ui-test-junit4:$version"
             const val uiText = "androidx.compose.ui:ui-text-google-fonts:$version"
             const val uiTestManifest = "androidx.compose.ui:ui-test-manifest:$version"
-            const val uiUtil = "androidx.compose.ui:ui-util:${version}"
+            const val uiUtil = "androidx.compose.ui:ui-util:$version"
             const val viewBinding = "androidx.compose.ui:ui-viewbinding:$version"
 
             object Material3 {
