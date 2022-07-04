@@ -3,8 +3,8 @@ import com.sam43.deps.AppDependencies
 import com.sam43.deps.Libs
 
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
     id("kotlin-android")
 }
 
@@ -71,46 +71,21 @@ android {
 }
 
 dependencies {
-    //std lib
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    //app libs
+    //std lib and app libs
     implementation(AppDependencies.appLibraries)
-    // covered, rest can be configured
-//    implementation Libs.Kotlin.stdlib
-//    implementation Libs.AndroidX.coreKtx
-//    implementation Libs.AndroidX.appcompat
+    // Lifecycle libs
+    implementation(AppDependencies.appLifeCycleLibraries)
+    // compose and material3
+    implementation(AppDependencies.appComposeLibraries)
+    // navigation
+    implementation(AppDependencies.appNavigationLibraries)
     //test libs
     testImplementation(AppDependencies.testLibraries)
-    // covered, rest can be configured
-//    androidTestImplementation Libs.junit
-//    androidTestImplementation Libs.AndroidX.Test.espressoCore
     androidTestImplementation(AppDependencies.androidTestLibraries)
 
-    implementation Libs.Coroutines.android
-    implementation Libs.AndroidX.Activity.activityCompose
-    implementation Libs.AndroidX.Lifecycle.livedata
-    implementation Libs.AndroidX.Lifecycle.viewModelCompose
-    implementation Libs.AndroidX.Navigation.fragment
-    implementation Libs.AndroidX.Navigation.uiKtx
-    implementation Libs.material3
-
-    implementation Libs.AndroidX.Compose.layout
-    implementation Libs.AndroidX.Compose.Material3.material3
-    implementation Libs.AndroidX.Compose.materialIconsExtended
-    implementation Libs.AndroidX.Compose.toolingPreview
-    implementation Libs.AndroidX.Compose.uiUtil
-    implementation Libs.AndroidX.Compose.runtime
-    implementation Libs.AndroidX.Compose.runtimeLivedata
-    implementation Libs.AndroidX.Compose.viewBinding
-    implementation Libs.AndroidX.Compose.uiText
     debugImplementation Libs.AndroidX.Compose.tooling
-
     debugImplementation Libs.AndroidX.Compose.uiTestManifest
-
-    androidTestImplementation Libs.AndroidX.Test.core
-    androidTestImplementation Libs.AndroidX.Test.rules
-    androidTestImplementation Libs.AndroidX.Test.Ext.junit
-    androidTestImplementation Libs.AndroidX.Compose.uiTest
 
     // androidx.test is forcing JUnit, 4.12. This forces it to use 4.13
     configurations.configureEach {

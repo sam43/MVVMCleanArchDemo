@@ -33,7 +33,7 @@ object Libs {
         object Compose {
             const val compilerVersion = "1.2.0"
             const val snapshot = ""
-            const val version = "1.2.0-rc03"
+            private const val version = "1.2.0-rc03"
 
             const val foundation = "androidx.compose.foundation:foundation:$version"
             const val layout = "androidx.compose.foundation:foundation-layout:$version"
@@ -52,7 +52,7 @@ object Libs {
 
             object Material3 {
                 const val snapshot = ""
-                const val version = "1.0.0-alpha10"
+                private const val version = "1.0.0-alpha10"
 
                 const val material3 = "androidx.compose.material3:material3:$version"
             }
