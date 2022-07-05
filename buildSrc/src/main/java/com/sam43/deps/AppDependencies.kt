@@ -30,6 +30,7 @@ object AppDependencies {
     val appLifeCycleLibraries = arrayListOf<String>().apply {
         addAll(listOf(
                 Libs.AndroidX.Lifecycle.livedata,
+                Libs.AndroidX.Lifecycle.viewModel,
                 Libs.AndroidX.Lifecycle.viewModelCompose
             )
         )
@@ -40,23 +41,42 @@ object AppDependencies {
             Libs.AndroidX.Navigation.uiKtx
         ))
     }
-
+    val appHiltLibraries = arrayListOf<String>().apply {
+        addAll(listOf(
+            Libs.Hilt.hilt,
+            Libs.Hilt.Test.hiltTest,
+            Libs.Hilt.Test.hiltAndroidTest
+        ))
+    }
+    val networkLibraries = arrayListOf<String>().apply {
+        addAll(listOf(
+            Libs.Network.retrofit,
+            Libs.Network.retrofitOkhttp,
+            Libs.Network.retrofitConverter,
+            Libs.Network.retrofitInterceptor,
+            Libs.Network.retrofitOkhttpProfiler
+        ))
+    }
+    val networkMockingLibraries = arrayListOf<String>().apply {
+        addAll(listOf())
+    }
     val androidTestLibraries = arrayListOf<String>().apply {
         addAll(listOf(
             Libs.AndroidX.Test.Ext.junit,
             test,
             espressoCore,
             Libs.AndroidX.Compose.uiTest,
+            Libs.AndroidX.Test.archCoreTesting,
             Libs.AndroidX.Test.core,
             Libs.AndroidX.Test.rules
         ))
     }
-
     val testLibraries = arrayListOf<String>().apply {
         add(Libs.junit)
     }
 }
 
+// We can use this after the groovy to kts migration (future)
 //util functions for adding the different type dependencies from build.gradle file
 fun DependencyHandler.kapt(list: List<String>) {
     list.forEach { dependency ->

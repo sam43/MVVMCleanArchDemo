@@ -1,4 +1,4 @@
-package com.sam43.material3mvvmca
+package com.sam43.material3mvvmca.ui
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
@@ -10,6 +10,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import com.sam43.material3mvvmca.R
 import com.sam43.material3mvvmca.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

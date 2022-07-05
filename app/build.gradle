@@ -6,6 +6,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -22,7 +24,11 @@ android {
     }
 
     buildTypes {
+        getByName("debug") {
+            buildConfigField("String", "BASE_URL", AppConfig.BASE_URL)
+        }
         getByName("release") {
+            buildConfigField("String", "BASE_URL", AppConfig.BASE_URL)
             proguardFiles(
                     getDefaultProguardFile("proguard-android-optimize.txt"),
                     AppConfig.proguardRules
@@ -41,7 +47,7 @@ android {
         viewBinding true
 
         // Disable unused AGP features
-        buildConfig false
+        buildConfig true
         aidl false
         renderScript false
         resValues false
@@ -70,19 +76,35 @@ android {
     }
 }
 
+// I think this is overkill until the KTS migration
+// Once it's done, we can use shared commonBuild.gradle.kts
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //std lib and app libs
     implementation(AppDependencies.appLibraries)
     // Lifecycle libs
     implementation(AppDependencies.appLifeCycleLibraries)
+    kapt(Libs.AndroidX.Lifecycle.lifecycleKapt)
     // compose and material3
     implementation(AppDependencies.appComposeLibraries)
+    // Hilt
+    implementation(AppDependencies.appHiltLibraries)
+    kapt(Libs.Hilt.Kapt.hiltKapt)
     // navigation
     implementation(AppDependencies.appNavigationLibraries)
+    // Retrofit2 Networking
+    implementation(AppDependencies.networkLibraries)
+
+
     //test libs
     testImplementation(AppDependencies.testLibraries)
     androidTestImplementation(AppDependencies.androidTestLibraries)
+
+    // Hilt test
+    testImplementation(Libs.Hilt.Test.hiltTest)
+    kaptTest(Libs.Hilt.Kapt.hiltKaptTest)
+    androidTestImplementation(Libs.Hilt.Test.hiltAndroidTest)
+    kaptAndroidTest(Libs.Hilt.Kapt.hiltAndroidKaptTest)
 
     debugImplementation Libs.AndroidX.Compose.tooling
     debugImplementation Libs.AndroidX.Compose.uiTestManifest
