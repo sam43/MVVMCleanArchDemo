@@ -77,6 +77,7 @@ object AppDependencies {
 
 // We can use this after the groovy to kts migration (future)
 //util functions for adding the different type dependencies from build.gradle file
+/*
 fun DependencyHandler.kapt(list: List<String>) {
     list.forEach { dependency ->
         add("kapt", dependency)
@@ -99,4 +100,4 @@ fun DependencyHandler.testImplementation(list: List<String>) {
     list.forEach { dependency ->
         add("testImplementation", dependency)
     }
-}
+}*/

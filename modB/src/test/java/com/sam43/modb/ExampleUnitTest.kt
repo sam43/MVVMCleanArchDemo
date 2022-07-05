@@ -1,4 +1,4 @@
-package com.sam43.moda
+package com.sam43.modb
 
 import org.junit.Test
 
