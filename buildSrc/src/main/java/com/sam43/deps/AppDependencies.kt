@@ -10,13 +10,12 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 object AppDependencies {
     val appLibraries = arrayListOf<String>().apply {
         addAll(listOf(
-                Libs.Kotlin.stdlib, coreKtx, appcompat, core, Libs.Coroutines.android
+                Libs.Kotlin.stdlib, coreKtx, appcompat, core, material3, Libs.Coroutines.android
             ))
     }
     val appComposeLibraries = arrayListOf<String>().apply {
         addAll(listOf(
             Libs.AndroidX.Activity.activityCompose,
-            material3,
             Libs.AndroidX.Compose.layout,
             Libs.AndroidX.Compose.materialIconsExtended,
             Libs.AndroidX.Compose.toolingPreview,

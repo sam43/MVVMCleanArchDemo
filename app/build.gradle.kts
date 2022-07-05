@@ -5,22 +5,22 @@ import com.sam43.deps.Libs
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-android")
-    id("kotlin-kapt")
+    kotlin("android")
+    kotlin("kapt")
     id("dagger.hilt.android.plugin")
 }
 
 android {
-    compileSdk(AppConfig.compileSdk)
+    compileSdk = AppConfig.compileSdk
 
     defaultConfig {
-        applicationId(AppConfig.applicationId)
-        minSdk(AppConfig.minSdk)
-        targetSdk(AppConfig.targetSdk)
-        versionCode(AppConfig.versionCode)
-        versionName(AppConfig.versionName)
+        applicationId = AppConfig.applicationId
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
+        versionCode = AppConfig.versionCode
+        versionName = AppConfig.versionName
 
-        testInstrumentationRunner(AppConfig.testRunnerClass)
+        testInstrumentationRunner = AppConfig.testRunnerClass
     }
 
     buildTypes {
@@ -36,26 +36,26 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
     }
     buildFeatures {
-        compose true
-        viewBinding true
+        compose = true
+        viewBinding = true
 
         // Disable unused AGP features
-        buildConfig true
-        aidl false
-        renderScript false
-        resValues false
-        shaders false
+        buildConfig = true
+        aidl = false
+        renderScript = false
+        resValues = false
+        shaders = false
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion Libs.AndroidX.Compose.compilerVersion
+        kotlinCompilerExtensionVersion = Libs.AndroidX.Compose.compilerVersion
     }
 
     packagingOptions {
@@ -67,11 +67,13 @@ android {
     productFlavors {
         create("staging") {
             applicationIdSuffix = ".staging"
-            setDimension(AppConfig.dimension)
+            dimension = AppConfig.dimension
+            //setDimension(AppConfig.dimension)
         }
 
         create("production") {
-            setDimension(AppConfig.dimension)
+            dimension = AppConfig.dimension
+            //setDimension(AppConfig.dimension)
         }
     }
 }
@@ -79,7 +81,7 @@ android {
 // I think this is overkill until the KTS migration
 // Once it's done, we can use shared commonBuild.gradle.kts
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     //std lib and app libs
     implementation(AppDependencies.appLibraries)
     // Lifecycle libs
@@ -106,13 +108,13 @@ dependencies {
     androidTestImplementation(Libs.Hilt.Test.hiltAndroidTest)
     kaptAndroidTest(Libs.Hilt.Kapt.hiltAndroidKaptTest)
 
-    debugImplementation Libs.AndroidX.Compose.tooling
-    debugImplementation Libs.AndroidX.Compose.uiTestManifest
+    debugImplementation(Libs.AndroidX.Compose.tooling)
+    debugImplementation(Libs.AndroidX.Compose.uiTestManifest)
 
     // androidx.test is forcing JUnit, 4.12. This forces it to use 4.13
-    configurations.configureEach {
-        resolutionStrategy {
-            force Libs.junit
-        }
-    }
+//    configurations.configureEach {
+//        resolutionStrategy {
+//            force = Libs.junit
+//        }
+//    }
 }

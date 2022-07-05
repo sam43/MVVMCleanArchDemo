@@ -5,9 +5,9 @@ object Libs {
     const val androidHiltPlugin = "com.google.dagger:hilt-android-gradle-plugin:2.40.5"
     const val jdkDesugar = "com.android.tools:desugar_jdk_libs:1.1.5"
 
-    const val junit = "junit:junit:4.13"
+    const val junit = "junit:junit:4.13.2"
 
-    const val material3 = "com.google.android.material:material:1.6.0-alpha03"
+    const val material3 = "com.google.android.material:material:1.6.1"
 
     object Kotlin {
         private const val version = "1.7.0"
@@ -24,7 +24,7 @@ object Libs {
     }
 
     object AndroidX {
-        const val appcompat = "androidx.appcompat:appcompat:1.4.1"
+        const val appcompat = "androidx.appcompat:appcompat:1.4.2"
         const val coreKtx = "androidx.core:core-ktx:1.7.0"
 
         object Activity {
@@ -73,11 +73,11 @@ object Libs {
             const val rules = "androidx.test:rules:$version"
 
             object Ext {
-                private const val version = "1.1.2"
+                private const val version = "1.1.3"
                 const val junit = "androidx.test.ext:junit-ktx:$version"
             }
 
-            const val espressoCore = "androidx.test.espresso:espresso-core:3.3.0"
+            const val espressoCore = "androidx.test.espresso:espresso-core:3.4.0"
         }
 
         object Lifecycle {
