@@ -117,10 +117,13 @@ object Libs {
     }
 
     object Db {
-
-        private const val version = "1.0.8"
-        const val room = "com.squareup.retrofit2:retrofit:2.9.0"
-        const val roomKapt =  "com.squareup.retrofit2:converter-gson:2.9.0"
-        const val roomTest =  "com.squareup.retrofit2:converter-gson:2.9.0"
+        private const val roomVersion = "2.4.2"
+        const val room = "androidx.room:room-runtime:$roomVersion"
+        const val roomKapt =  "androidx.room:room-compiler:$roomVersion"
+        // optional - Kotlin Extensions and Coroutines support for Room
+        const val roomCoroutines =  "androidx.room:room-ktx:$roomVersion"
+        const val roomTest =  "androidx.room:room-testing:$roomVersion"
+        // optional - Paging 3 Integration
+        const val roomPagingSupport =  "androidx.room:room-paging:2.5.0-alpha02"
     }
 }

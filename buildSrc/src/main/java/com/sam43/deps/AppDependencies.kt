@@ -42,9 +42,7 @@ object AppDependencies {
     }
     val appHiltLibraries = arrayListOf<String>().apply {
         addAll(listOf(
-            Libs.Hilt.hilt,
-            Libs.Hilt.Test.hiltTest,
-            Libs.Hilt.Test.hiltAndroidTest
+            Libs.Hilt.hilt
         ))
     }
     val networkLibraries = arrayListOf<String>().apply {
@@ -59,6 +57,14 @@ object AppDependencies {
     val networkMockingLibraries = arrayListOf<String>().apply {
         addAll(listOf())
     }
+    val roomDbLibraries = arrayListOf<String>().apply {
+        addAll(listOf(
+            Libs.Db.room,
+            Libs.Db.roomCoroutines,
+            // optional
+            Libs.Db.roomPagingSupport
+        ))
+    }
     val androidTestLibraries = arrayListOf<String>().apply {
         addAll(listOf(
             Libs.AndroidX.Test.Ext.junit,
@@ -67,11 +73,13 @@ object AppDependencies {
             Libs.AndroidX.Compose.uiTest,
             Libs.AndroidX.Test.archCoreTesting,
             Libs.AndroidX.Test.core,
-            Libs.AndroidX.Test.rules
+            Libs.Hilt.Test.hiltAndroidTest
         ))
     }
     val testLibraries = arrayListOf<String>().apply {
-        add(Libs.junit)
+        addAll(listOf(Libs.junit,
+            Libs.Db.roomTest,
+            Libs.Hilt.Test.hiltTest,))
     }
 }
 

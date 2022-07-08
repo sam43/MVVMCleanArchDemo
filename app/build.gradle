@@ -10,6 +10,11 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
+// Reading data from secret
+def secretFile = rootProject.file("secret.properties")
+def secretProperty = new Properties()
+secretProperty.load(new FileInputStream(secretFile))
+
 android {
     compileSdk(AppConfig.compileSdk)
 
@@ -25,10 +30,8 @@ android {
 
     buildTypes {
         getByName("debug") {
-            //buildConfigField("String", "BASE_URL", "$AppConfig.BASE_URL")
         }
         getByName("release") {
-            //buildConfigField("String", "BASE_URL", "$AppConfig.BASE_URL")
             proguardFiles(
                     getDefaultProguardFile("proguard-android-optimize.txt"),
                     AppConfig.proguardRules
@@ -66,11 +69,13 @@ android {
     flavorDimensions(AppConfig.dimension)
     productFlavors {
         create("staging") {
+            buildConfigField("String", "BASE_URL", secretProperty['STAGING_URL'])
             applicationIdSuffix = ".staging"
             setDimension(AppConfig.dimension)
         }
 
         create("production") {
+            buildConfigField("String", "BASE_URL", secretProperty['PRODUCTION_URL'])
             setDimension(AppConfig.dimension)
         }
     }
@@ -90,6 +95,9 @@ dependencies {
     // Hilt
     implementation(AppDependencies.appHiltLibraries)
     kapt(Libs.Hilt.Kapt.hiltKapt)
+    // RoomDb
+    implementation(AppDependencies.roomDbLibraries)
+    kapt(Libs.Db.roomKapt)
     // navigation
     implementation(AppDependencies.appNavigationLibraries)
     // Retrofit2 Networking

@@ -13,5 +13,4 @@ object AppConfig {
     const val dimension = "environment"
     const val applicationId = "com.sam43.material3mvvmca"
     const val testRunnerClass = "androidx.test.runner.AndroidJUnitRunner"
-    const val BASE_URL = "dasnkjfsad"
 }
