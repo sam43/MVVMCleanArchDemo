@@ -56,7 +56,9 @@ android {
         resValues false
         shaders false
     }
-
+    kapt {
+        correctErrorTypes = true
+    }
     composeOptions {
         kotlinCompilerExtensionVersion Libs.AndroidX.Compose.compilerVersion
     }

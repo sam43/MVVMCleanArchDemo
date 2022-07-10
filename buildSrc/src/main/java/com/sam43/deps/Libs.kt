@@ -2,7 +2,6 @@ package com.sam43.deps
 
 object Libs {
     const val androidGradlePlugin = "com.android.tools.build:gradle:7.2.1"
-    const val androidHiltPlugin = "com.google.dagger:hilt-android-gradle-plugin:2.40.5"
     const val jdkDesugar = "com.android.tools:desugar_jdk_libs:1.1.5"
 
     const val junit = "junit:junit:4.13.2"
@@ -90,19 +89,21 @@ object Libs {
     }
 
     object Hilt {
-        const val hilt = "com.google.dagger:hilt-android:2.40.5"
+        const val version = "2.42"
+        const val androidHiltPlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
+        const val hilt = "com.google.dagger:hilt-android:$version"
         object Test {
             // For Robolectric tests.
             // ...with Kotlin.
-            const val hiltTest = "com.google.dagger:hilt-android-testing:2.40.5"
+            const val hiltTest = "com.google.dagger:hilt-android-testing:$version"
             // For instrumented tests.
             // ...with Kotlin.
-            const val hiltAndroidTest = "com.google.dagger:hilt-android-testing:2.40.5"
+            const val hiltAndroidTest = "com.google.dagger:hilt-android-testing:$version"
         }
         object Kapt {
-            const val hiltKapt = "com.google.dagger:hilt-compiler:2.40.5"
-            const val hiltKaptTest = "com.google.dagger:hilt-android-compiler:2.40.5"
-            const val hiltAndroidKaptTest = "com.google.dagger:hilt-android-compiler:2.40.5"
+            const val hiltKapt = "com.google.dagger:hilt-compiler:$version"
+            const val hiltKaptTest = "com.google.dagger:hilt-android-compiler:$version"
+            const val hiltAndroidKaptTest = "com.google.dagger:hilt-android-compiler:$version"
         }
     }
 
