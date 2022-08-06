@@ -72,12 +72,14 @@ android {
     productFlavors {
         create("staging") {
             buildConfigField("String", "BASE_URL", secretProperty['STAGING_URL'])
+            buildConfigField("String", "DB_NAME", secretProperty['DB_NAME'])
             applicationIdSuffix = ".staging"
             setDimension(AppConfig.dimension)
         }
 
         create("production") {
             buildConfigField("String", "BASE_URL", secretProperty['PRODUCTION_URL'])
+            buildConfigField("String", "DB_NAME", secretProperty['DB_NAME'])
             setDimension(AppConfig.dimension)
         }
     }

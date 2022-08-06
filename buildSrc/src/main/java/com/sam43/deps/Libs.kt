@@ -120,11 +120,14 @@ object Libs {
     object Db {
         private const val roomVersion = "2.4.2"
         const val room = "androidx.room:room-runtime:$roomVersion"
+        const val roomKtx = "androidx.room:room-ktx:$roomVersion"
         const val roomKapt =  "androidx.room:room-compiler:$roomVersion"
         // optional - Kotlin Extensions and Coroutines support for Room
-        const val roomCoroutines =  "androidx.room:room-ktx:$roomVersion"
+        //const val roomCoroutines =  "androidx.room:room-ktx:$roomVersion"
         const val roomTest =  "androidx.room:room-testing:$roomVersion"
-        // optional - Paging 3 Integration
+        // optional - Paging 3.0 Integration
         const val roomPagingSupport =  "androidx.room:room-paging:2.5.0-alpha02"
+        // for jetpack compose
+        // implementation 'androidx.paging:paging-compose:1.0.0-alpha15'
     }
 }

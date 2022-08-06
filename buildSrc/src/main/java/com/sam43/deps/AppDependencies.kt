@@ -60,9 +60,9 @@ object AppDependencies {
     val roomDbLibraries = arrayListOf<String>().apply {
         addAll(listOf(
             Libs.Db.room,
-            Libs.Db.roomCoroutines,
+            Libs.Db.roomKtx,
             // optional
-            Libs.Db.roomPagingSupport
+            //Libs.Db.roomPagingSupport
         ))
     }
     val androidTestLibraries = arrayListOf<String>().apply {
