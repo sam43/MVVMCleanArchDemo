@@ -62,7 +62,7 @@ object AppDependencies {
             Libs.Db.room,
             Libs.Db.roomKtx,
             // optional
-            //Libs.Db.roomPagingSupport
+            Libs.Db.roomPagingCompose
         ))
     }
     val androidTestLibraries = arrayListOf<String>().apply {
